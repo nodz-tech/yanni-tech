@@ -86,7 +86,7 @@ if(!cdapikey) return res.json(resposta.semkey)
   	if(cdapikey !== key) return res.sendFile(keyinvalida)
 if (!e1) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI1"})
 if (!e2) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI2"})
-emojimix_api = `https://tikolu.net/emojimix/${e1}+${e2}`
+emojimix_api = `https://emoji.supply/kitchen/?${e1}+${e2}=8ww1kx`
 res.type('png')
 res.send(await getBuffer(emojimix_api))
 })

@@ -78,6 +78,18 @@ function getRandom(nans) {
    res.send(resposta.error)
    }
    })
+router.all('/tools/emojimix', async (req, res) => {
+apikey = req.query.apikey;
+e1 = req.query.emoji1;
+e2 = req.query.emoji2;
+if(!cdapikey) return res.json(resposta.semkey)
+  	if(cdapikey !== key) return res.sendFile(keyinvalida)
+if (!e1) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI1"})
+if (!e2) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI2"})
+emojimix_api = `https://tikolu.net/emojimix/${e1}+${e2}`
+res.type('png')
+res.send(await getBuffer(emojimix_api))
+})
   router.get('/canvas/*', async (req, res) => {
   var cdapikey = req.query.apikey;
    let { url, texto } = req.query
